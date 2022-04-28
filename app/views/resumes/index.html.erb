@@ -1,0 +1,54 @@
+<% if !flash[:notice].blank? %>
+  <div class = "alert alert-info">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
+<br />
+
+<%= link_to "Add Info", new_resume_path, class: "btn btn-primary" %>
+<br />
+<br />
+
+<table class = "table table-bordered table-striped">
+  <thead>.
+  <tr>
+    <th>Image</th>
+    <th>Name</th>
+    <th>Contact Number</th>
+    <th>Cnic</th>
+    <th>Address</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @resumes.each do |r| %>
+
+    <tr>
+      <td>
+        <% if r.avatar.attached? %>
+          <image src="<%=(url_for (r.avatar)) %>"></image>
+        <%end%>
+      </td>
+      <td><%= r.name %></td>
+      <td><%= r.phone_no %></td>
+      <td><%= r.cnic %></td>
+      <td><%= r.address %></td>
+<!--      <td><%#= link_to "Download Resume", resume.attachment_url %></td>-->
+      <td>
+        <% if can? :destroy, r %>
+          <%= button_to "Delete",  r, method: :delete, class: "btn btn-danger", confirm: "Are you sure that you wish to delete #{r.name} details?" %><br>
+        <% end %>
+      </td>
+      <td>
+        <% if can? :update, r %>
+          <%= button_to 'Edit', edit_resume_path(r), method: :get, class: "btn btn-primary" %>
+        <%end%>
+      </td>
+    </tr>
+
+  <% end %>
+  </tbody>
+</table>
+
+<%= link_to "Export to PDF", resume_path(@resumes), target: :_blank ,class: "btn btn-primary" %>

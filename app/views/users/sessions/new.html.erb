@@ -1,0 +1,77 @@
+<!--<h2>Log in</h2>-->
+
+<%#= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<!--  <div class="field">-->
+<!--    <%#= f.label :email %><br />-->
+    <%#= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<!--  </div>-->
+
+<!--  <div class="field">-->
+<!--    <%#= f.label :password %><br />-->
+    <%#= f.password_field :password, autocomplete: "current-password" %>
+<!--  </div>-->
+
+  <%# if devise_mapping.rememberable? %>
+<!--    <div class="field">-->
+      <%#= f.check_box :remember_me %>
+      <%#= f.label :remember_me %>
+<!--    </div>-->
+  <%# end %>
+
+<!--  <div class="actions">-->
+    <%#= f.submit "Log in" %>
+<!--  </div>-->
+<%# end %>
+
+<%#= render "users/shared/links" %>
+
+
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="login pull-left">
+      <div class="mobile">
+        <%#= image_tag('apple-touch-icon.png') %>
+        <h2>Heading to profiler?<br/> Stay connected</h2>
+        <p>login <strong>profiler app</strong> through valid credentials</p>
+      </div>
+    </div>
+    <div class="register pull-right">
+      <div class="header">
+        <h1>log in</h1>
+        <span>Access your account.</span>
+      </div>
+
+      <%= form_for(resource, as: resource_name, url: user_session_path) do |f| %>
+
+        <div class="form-group clearfix">
+          <%= f.label :email %>
+          <%= f.email_field :email, placeholder: 'e.g. test@gmail.com' %>
+        </div>
+
+        <div class="form-group clearfix">
+          <%= f.label :password %><br />
+          <%= f.password_field :password, autocomplete: "current-password" %>
+        </div>
+
+
+        <% if devise_mapping.rememberable? %>
+          <div class="form-group clearfix">
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me %>
+          </div>
+        <% end %>
+
+        <div class="actions">
+          <%= f.submit "login", class: "btn btn-default btn-orange" %>
+        </div>
+
+        <div class="devise-links">
+          <%= render "devise/shared/links" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

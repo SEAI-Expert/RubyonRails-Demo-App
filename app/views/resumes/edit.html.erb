@@ -1,0 +1,17 @@
+<div class = "well">
+  <%= form_with(Model: @resume) do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <%= f.label :phone_no %>
+    <%= f.number_field :phone_no %>
+    <%= f.label :cnic %>
+    <%= f.number_field :cnic %>
+    <%= f.label :address %>
+    <%= f.text_field :address %>
+    <%= f.label "Profile Photo" %>
+    <%= f.file_field :avatar %>
+    <%= f.submit "Update", class: "btn btn-primary"%>
+  <% end %>
+</div>
+
+
